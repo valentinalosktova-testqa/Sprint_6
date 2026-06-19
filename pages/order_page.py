@@ -25,10 +25,7 @@ class OrderPage(BasePage):
 
     @allure.step("Клик по финальной кнопке 'Заказать'")
     def click_final_order_button(self):
-        button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(OrderPageLocators.ORDER_BUTTON_FINAL)
-        )
-        self.driver.execute_script("arguments[0].click();", button)
+        self.click_element_js(OrderPageLocators.ORDER_BUTTON_FINAL)
 
     @allure.step("Получить сообщение об успешном заказе")
     def get_success_message(self):
