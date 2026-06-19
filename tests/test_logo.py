@@ -1,24 +1,25 @@
 import pytest
 from pages.main_page import MainPage
-import time
+from selenium.webdriver.support.ui import WebDriverWait
 
 
-def test_logo_scooter_goes_to_main(driver):
-    main_page = MainPage(driver)
-    driver.get("https://qa-scooter.praktikum-services.ru/")
-    main_page.click_logo_scooter()
-    assert driver.current_url == "https://qa-scooter.praktikum-services.ru/"
+class TestLogo:
+    def test_logo_scooter_goes_to_main(self, driver):
+        main_page = MainPage(driver)
+        driver.get("https://qa-scooter.praktikum-services.ru/")
+        main_page.click_logo_scooter()
+        assert driver.current_url == "https://qa-scooter.praktikum-services.ru/"
 
-def test_logo_yandex_opens_dzen(driver):
-    main_page = MainPage(driver)
-    driver.get("https://qa-scooter.praktikum-services.ru/")
-    main_page.click_logo_yandex()
+    def test_logo_yandex_opens_dzen(self, driver):
+        main_page = MainPage(driver)
+        driver.get("https://qa-scooter.praktikum-services.ru/")
+        main_page.click_logo_yandex()
 
-    time.sleep(3)
-    
-    # Переключаемся на новое окно
-    driver.switch_to.window(driver.window_handles[1])
-    
-    # Проверяем, что открылся Дзен (или Яндекс)
-    assert driver.current_url != "about:blank"
-    assert "dzen.ru" in driver.current_url or "yandex.ru" in driver.current_url
+        driver.switch_to.window(driver.window_handles[1])
+
+    # Ждём, пока URL загрузится и станет не пустым
+        WebDriverWait(driver, 10).until(
+            lambda d: d.current_url != "about:blank"
+        )
+
+        assert "dzen.ru" in driver.current_url or "yandex.ru" in driver.current_url
