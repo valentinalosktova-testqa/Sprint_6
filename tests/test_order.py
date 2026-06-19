@@ -1,14 +1,10 @@
 import pytest
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
+from data import TestData
 
 class TestOrder:
-    @pytest.mark.parametrize("order_data", [
-        {"name": "Иван", "surname": "Иванов", "address": "Пушкина 1", "metro": "Лубянка", "phone": "+79998887766",
-         "date": "22.06.2026", "period": "сутки", "color": "black", "comment": "Быстрее пожалуйста"},
-        {"name": "Петр", "surname": "Петров", "address": "Ленина2", "metro": "Охотный Ряд", "phone": "+79998887755",
-         "date": "22.06.2026", "period": "двое суток", "color": "grey", "comment": "Позвоните за час"}
-    ])
+    @pytest.mark.parametrize("order_data", TestData.ORDER_DATA)
     def test_order_scooter_top_button(self, driver, order_data):
         main_page = MainPage(driver)
         driver.get("https://qa-scooter.praktikum-services.ru/")
