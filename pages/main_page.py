@@ -22,6 +22,11 @@ class MainPage(BasePage):
     def click_order_button_top(self):
         self.click_element(MainPageLocators.ORDER_BUTTON_TOP)
 
+    def click_order_button_bottom(self):
+        button = self.find_element(MainPageLocators.ORDER_BUTTON_BOTTOM)
+        self.scroll_to_element(button)
+        button.click()
+
     def click_logo_scooter(self):
         self.click_element(MainPageLocators.LOGO_SCOOTER)
 
