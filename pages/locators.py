@@ -2,16 +2,16 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators:
     # Верхняя кнопка "Заказать"
-    ORDER_BUTTON_TOP = (By.XPATH, "(//button[text()='Заказать'])[1]")
+    ORDER_BUTTON_TOP = (By.XPATH, "//div[contains(@class, 'Header_Nav__AGCXC')]//button[text()='Заказать']")
 
     # Нижняя кнопка "Заказать"
-    ORDER_BUTTON_BOTTOM = (By.XPATH, "(//button[text()='Заказать'])[2]")
+    ORDER_BUTTON_BOTTOM = (By.XPATH, "//div[contains(@class, 'Home_FinishButton__1_cWm')]//button[text()='Заказать']")
 
      # Вопрос по индексу (0, 1, 2...)
-    QUESTION = (By.XPATH, "//div[@id='accordion_heading-{}']")
+    QUESTION = (By.XPATH, "//div[@id='accordion__heading-{}']")
 
     # Ответ по индексу (0, 1, 2...)
-    ANSWER = (By.XPATH, "//div[@id='accordion_panel-{}']/p")
+    ANSWER = (By.XPATH, "//div[@id='accordion__panel-{}']/p")
 
     LOGO_SCOOTER = (By.XPATH, "//a[contains(@class, 'Header_LogoScooter__3lsAR')]")
     LOGO_YANDEX = (By.XPATH, "//a[contains(@class, 'Header_LogoYandex__3TSOI')]")
